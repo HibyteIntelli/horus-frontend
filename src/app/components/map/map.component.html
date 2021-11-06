@@ -1,3 +1,18 @@
-<div class="full" id="map">
+<!--<div class="container">-->
+<!--  <button (click)="initializeMap()">Reset</button>-->
+<!--</div>-->
 
-</div>
+<dx-popup
+  [showTitle]="true"
+  title="Chart Configurator"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="false"
+  container=".dx-viewport"
+  [(visible)]="visible"
+>
+  <button (click)="initializeMap()" class="reset-button">Reset</button>
+  <div id="map"></div>
+</dx-popup>
+
+

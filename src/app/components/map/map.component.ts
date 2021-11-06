@@ -15,17 +15,20 @@ export class MapComponent implements OnInit, OnChanges {
   @Input()
   visible: boolean;
   private map: google.maps.Map;
+  private infowindow: google.maps.InfoWindow;
+
 
   ngOnInit(): void {
+
   }
 
   initializeMap() {
 
-    let infowindow = new google.maps.InfoWindow();
+    this.infowindow = new google.maps.InfoWindow();
     let directionsService = new google.maps.DirectionsService;
     let directionsDisplay = new google.maps.DirectionsRenderer({
       suppressPolylines: true,
-      infoWindow: infowindow
+      infoWindow: this.infowindow
     });
 
     let loader = new Loader({
@@ -35,8 +38,7 @@ export class MapComponent implements OnInit, OnChanges {
     loader.load().then(() => {
       console.log('loaded gmaps')
 
-      const location = { lat: 51.233334, lng: 	6.783333 }
-
+      let location = { lat: 51.233334, lng: 	6.783333 }
       // @ts-ignore
       this.map = new google.maps.Map(document.getElementById("map"), {
         center: location,
@@ -44,12 +46,25 @@ export class MapComponent implements OnInit, OnChanges {
         styles: styles
       })
       directionsDisplay.setMap(this.map);
-      this.calculateAndDisplayRoute(directionsService, directionsDisplay, this.map, infowindow);
-      const marker = new google.maps.Marker({
-        position: location,
-        map: this.map,
+
+      this.map?.addListener("click", (mapsMouseEvent: any) => {
+        this.createMarker(mapsMouseEvent.latLng);
+        this.infowindow = new google.maps.InfoWindow({
+          position: mapsMouseEvent.latLng,
+        });
       });
+
+
+      // this.calculateAndDisplayRoute(directionsService, directionsDisplay, this.map, infowindow);
+
     })
+  }
+
+  createMarker(location:any ) {
+    new google.maps.Marker({
+      position: location,
+      map: this.map,
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

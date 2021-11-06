@@ -8,11 +8,11 @@ import {ChartTypeEnum} from "../../types";
 })
 export class ChartConfigurationComponent implements OnInit {
 
-  parameters: {name: string}[] = [
-    {name: 'Temperature'},
-    {name: 'Humidity'},
-    {name: 'Wind Speed'},
-    {name: 'Sea Ice Thickness'}
+  parameters: {id: number, name: string}[] = [
+    {id: 1, name: 'Temperature'},
+    {id: 2, name: 'Humidity'},
+    {id: 3, name: 'Wind Speed'},
+    {id: 4, name: 'Sea Ice Thickness'}
   ];
 
   @Input()
@@ -20,6 +20,8 @@ export class ChartConfigurationComponent implements OnInit {
 
   @Output()
   addConfiguration = new EventEmitter();
+  @Output()
+  dashboardTitle = new EventEmitter();
 
   chartTypes = [
     {type: ChartTypeEnum.bar},
@@ -34,9 +36,7 @@ export class ChartConfigurationComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.parameters);
-  }
+  ngOnInit(): void {}
 
   onGridBoxOptionChanged($event: any){
   }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Loader} from "@googlemaps/js-api-loader";
-
+import {styles} from "./mapstyles";
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -8,34 +8,32 @@ import {Loader} from "@googlemaps/js-api-loader";
 })
 export class MapComponent implements OnInit {
 
-  @Input()
-  visible: boolean
+  title = 'google-maps';
 
-  @ViewChild('map') mapElement: any;
-  map: google.maps.Map;
-  locationMarker: google.maps.Marker;
-
-  constructor() {
-  }
+  private map: google.maps.Map
 
   ngOnInit(): void {
-    this.initializeMap();
-  }
+    let loader = new Loader({
+      apiKey: 'AIzaSyBR6A65P_BM9v4JMyY1ySFlWmwZghK0Fm0'
+    })
 
-  initializeMap() {
+    loader.load().then(() => {
+      console.log('loaded gmaps')
 
-    const loader = new Loader({
-      apiKey: 'AIzaSyCUei_u9AxSBwMcQCBomE2TYdX2YGbeVb0'
-    });
-    if (this.visible) {
-      loader.load().then(() => {
-        const initialLocation = {lat: 45.75372, lng: 21.22571};
-        this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-          center: initialLocation,
-          zoom: 10
-        });
+      const location = { lat: 51.233334, lng: 	6.783333 }
+
+      // @ts-ignore
+      this.map = new google.maps.Map(document.getElementById("map"), {
+        center: location,
+        zoom: 6,
+        styles: styles
+      })
+
+      const marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
       });
-    }
+    })
   }
 
 }

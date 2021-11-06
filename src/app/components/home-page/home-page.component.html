@@ -1,3 +1,7 @@
-<div *ngFor="let dashboard of dashboards" class="container">
-  <app-dashboard-data-card [dashboard]="dashboard"></app-dashboard-data-card>
+<app-header (newDashboard)="goToNewDashboardPage($event)"></app-header>
+
+<div class="container">
+  <div *ngFor="let dashboard of dashboards" class="card">
+    <app-dashboard-data-card [dashboard]="dashboard"></app-dashboard-data-card>
+  </div>
 </div>

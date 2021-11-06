@@ -1,0 +1,21 @@
+.container {
+  margin-left: 7rem;
+  margin-top: 5rem;
+  display: flex;
+}
+
+.first-container {
+  border: 3px dashed #d4adcf;
+  height: 200px;
+  background: #92dce5;
+  margin-bottom: 10rem;
+  margin-right: 10rem;
+}
+
+.second-container {
+  border: 5px dashed #d4adcf;
+  height: 200px;
+  background: #92dce5;
+  margin-bottom: 10rem;
+  margin-right: 10rem;
+}

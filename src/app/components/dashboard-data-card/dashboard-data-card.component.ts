@@ -18,7 +18,7 @@ export class DashboardDataCardComponent implements OnInit {
   }
 
   goToDashboard(){
-    this.router.navigate([`dashboard`], {queryParams: {id: this.dashboard.id}});
+    this.router.navigate([`dashboard`], {queryParams: {id: this.dashboard.id, editMode: false}});
   }
 
 }

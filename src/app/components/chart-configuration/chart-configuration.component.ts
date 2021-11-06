@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ChartTypeEnum} from "../../types";
+import {ChartType, ChartTypeEnum} from "../../types";
 
 @Component({
   selector: 'app-chart-configuration',
@@ -8,13 +8,6 @@ import {ChartTypeEnum} from "../../types";
 })
 export class ChartConfigurationComponent implements OnInit {
 
-  parameters: {id: number, name: string}[] = [
-    {id: 1, name: 'Temperature'},
-    {id: 2, name: 'Humidity'},
-    {id: 3, name: 'Wind Speed'},
-    {id: 4, name: 'Sea Ice Thickness'}
-  ];
-
   @Input()
   noOfDisplays = 1;
 
@@ -22,23 +15,41 @@ export class ChartConfigurationComponent implements OnInit {
   addConfiguration = new EventEmitter();
   @Output()
   dashboardTitle = new EventEmitter();
+  @Output()
+  chartTitle = new EventEmitter();
+  @Output()
+  targetName = new EventEmitter();
+  @Output()
+  chartType = new EventEmitter();
+  @Output()
+  parameter = new EventEmitter();
+
+  parameters: { name: string }[] = [
+    {name: 'Temperature'},
+    {name: 'Humidity'},
+    {name: 'Wind Speed'},
+    {name: 'Sea Ice Thickness'}
+  ];
 
   chartTypes = [
     {type: ChartTypeEnum.bar},
     {type: ChartTypeEnum.circularGauge},
-    {type: ChartTypeEnum.doughnut},
     {type: ChartTypeEnum.line},
-    {type: ChartTypeEnum.pie},
     {type: ChartTypeEnum.range}
   ];
-
   showMap = false;
 
-  constructor() { }
-
-  ngOnInit(): void {}
-
-  onGridBoxOptionChanged($event: any){
+  constructor() {
   }
 
+  ngOnInit(): void {
+  }
+
+  emitParameter($event: any) {
+    this.parameter.emit($event.selectedItem.name);
+  }
+
+  emitChartType($event: any) {
+    this.chartType.emit($event.selectedItem.type);
+  }
 }

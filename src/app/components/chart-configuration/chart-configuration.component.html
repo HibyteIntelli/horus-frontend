@@ -1,25 +1,26 @@
 <div class="dx-field">
   <div class="dx-field-value">
-    <dx-text-box placeholder="Dashboard title..." ></dx-text-box>
+    <dx-text-box placeholder="Dashboard title..." (onChange)="dashboardTitle.emit($event.event.target.value)"></dx-text-box>
   </div>
 </div>
 <div class="dx-field" *ngFor="let index of [].constructor(noOfDisplays)">
   <div class="dx-field-value">
-    <dx-text-box placeholder="Chart title..." (contentReady)="dashboardTitle.emit($event)"></dx-text-box>
+    <dx-text-box placeholder="Chart title..." (onChange)="chartTitle.emit($event.event.target.value)" class="dropdown"></dx-text-box>
   </div>
   <div class="dx-field-value dropdown">
     <dx-select-box
+      [value]="chartType"
       valueExpr="type"
       displayExpr="type"
       placeholder="Chart Type"
       [dataSource]="chartTypes"
-      (onOptionChanged)="onGridBoxOptionChanged($event)"
+      (onSelectionChanged)="emitChartType($event)"
     ></dx-select-box>
   </div>
   <div class="dx-field-value">
-    <dx-text-box placeholder="Target name..."></dx-text-box>
+    <dx-text-box placeholder="Target name..." (onChange)="targetName.emit($event.event.target.value)"></dx-text-box>
   </div>
-  <div class="dx-field-value">
+  <div class="dx-field-value dropdown">
     <dx-button
       stylingMode="contained"
       text="Location"
@@ -33,6 +34,7 @@
       valueExpr="id"
       placeholder="Parameter"
       [dataSource]="parameters"
+      (onSelectionChanged)="emitParameter($event)"
       displayExpr="name"
     ></dx-select-box>
   </div>

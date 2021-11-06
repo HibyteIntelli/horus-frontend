@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ChartConfigurationComponent } from './components/chart-configuration/chart-configuration.component';
 import {
-  DxButtonModule,
+  DxBarGaugeModule,
+  DxButtonModule, DxChartModule, DxCircularGaugeModule,
   DxDropDownBoxModule,
   DxPopupModule,
   DxSelectBoxModule,
@@ -20,6 +21,11 @@ import {AppRoutingModule} from "../app-routing.module";
 import {AuthInterceptor} from "./providers/auth.interceptor";
 import { DashboardDataCardComponent } from './components/dashboard-data-card/dashboard-data-card.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
+import {DxiItemModule} from "devextreme-angular/ui/nested";
+import { LineSeriesComponent } from './components/charts/line-series/line-series.component';
+import { RangeSeriesComponent } from './components/charts/range-series/range-series.component';
+import { CircularGaugeComponent } from './components/charts/circular-gauge/circular-gauge.component';
+import { BarGaugeComponent } from './components/charts/bar-gauge/bar-gauge.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,11 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
     MapComponent,
     HomePageComponent,
     DashboardDataCardComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    LineSeriesComponent,
+    RangeSeriesComponent,
+    CircularGaugeComponent,
+    BarGaugeComponent
   ],
   imports: [
     AppRoutingModule,
@@ -40,7 +50,11 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
     DxPopupModule,
     DxDropDownBoxModule,
     DxSelectBoxModule,
-    HttpClientModule
+    HttpClientModule,
+    DxiItemModule,
+    DxBarGaugeModule,
+    DxCircularGaugeModule,
+    DxChartModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

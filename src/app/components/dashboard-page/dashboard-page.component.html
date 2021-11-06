@@ -1,7 +1,18 @@
 <app-header></app-header>
+<dx-button
+  *ngIf="!editMode"
+  class="alert-button"
+  text="!">
+</dx-button>
 <div class="container">
   <div class="d-grid">
     <div class="first-container" id="small-container1">
+      <dx-select-box
+        valueExpr="name"
+        displayExpr="name"
+        placeholder="Chart"
+        [dataSource]="dashboardCharts"
+      ></dx-select-box>
     </div>
     <div class="first-container" id="small-container2"></div>
   </div>

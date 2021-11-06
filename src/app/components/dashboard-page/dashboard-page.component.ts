@@ -14,6 +14,7 @@ export class DashboardPageComponent implements OnInit {
   editMode: boolean;
   dashboardId: number;
   dashboard: Dashboard;
+  dashboardCharts: any[] = [];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.route.queryParams.subscribe(response => {
@@ -25,6 +26,7 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getDashboardById(this.dashboardId).subscribe(response => {
       this.dashboard = response;
+      this.dashboard.charts.forEach(chartId => this.dataService.getChartById(chartId).subscribe(response => this.dashboardCharts.push(response)));
     });
     if (this.editMode) {
       this.setSmallContainersSize();
@@ -34,9 +36,9 @@ export class DashboardPageComponent implements OnInit {
 
   setSmallContainersSize() {
     // @ts-ignore
-    document.getElementById('small-container1').style.width = `${window.innerWidth / 4}px`;
+    document.getElementById('small-container1').style.width = `${window.innerWidth / 3.5}px`;
     // @ts-ignore
-    document.getElementById('small-container2').style.width = `${window.innerWidth / 4}px`;
+    document.getElementById('small-container2').style.width = `${window.innerWidth / 3.5}px`;
   }
 
   setLargeContainersSize() {

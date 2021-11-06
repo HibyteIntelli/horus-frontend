@@ -50,4 +50,7 @@ export class DataService {
     return this.httpClient.post<Team>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/team`, team);
   }
 
+  getChartById(id: any) {
+    return this.httpClient.get<Chart[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/item/${id}`);
+  }
 }

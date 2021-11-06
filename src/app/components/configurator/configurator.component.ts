@@ -23,6 +23,7 @@ export class ConfiguratorComponent implements OnInit {
   parameter: string;
   charts: Chart[] = [];
   allChartTypes: ChartType[] = [];
+  formattedCharts: Chart[] = [];
 
   constructor(private dataService: DataService) {
   }
@@ -59,6 +60,10 @@ export class ConfiguratorComponent implements OnInit {
 
   saveDetails() {
     this.buildCharts();
+    this.parseAndChangesChartData();
+  }
+
+  parseAndChangesChartData() {
     this.charts.forEach(chart => {
       chart.target.metrics = [];
       this.buildMetrics(chart);
@@ -67,13 +72,13 @@ export class ConfiguratorComponent implements OnInit {
         this.dataService.addTarget(chart.target).subscribe(response => {
           chart.target = response;
           this.dataService.addChart(chart).subscribe(response => {
-            this.newDashboard.charts?.push(response);
+            this.formattedCharts.push(response);
+            this.buildData();
+            this.saveDashboard();
           });
         })
       });
     });
-    this.buildData();
-    this.saveDashboard();
   }
 
   buildMetrics(chart: Chart) {
@@ -85,6 +90,7 @@ export class ConfiguratorComponent implements OnInit {
   }
 
   saveDashboard() {
+    this.newDashboard.charts = this.formattedCharts;
     this.dataService.addDashboard(this.newDashboard).subscribe(response => {
       this.newDashboardEmitter.emit(response.id);
       this.visible = false;

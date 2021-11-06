@@ -22,7 +22,7 @@ RUN rm -rf /usr/local/apache2/htdocs/*
 
 RUN pwd && ls -l -a
 COPY .htaccess /usr/local/apache2/htdocs/
-COPY --from=builder /app/dist/onebite /usr/local/apache2/htdocs/
+COPY --from=builder /app/dist/horus /usr/local/apache2/htdocs/
 COPY docker-start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-start.sh
 

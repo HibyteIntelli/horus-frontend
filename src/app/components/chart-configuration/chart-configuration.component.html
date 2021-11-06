@@ -8,22 +8,13 @@
     <dx-text-box placeholder="Chart title..."></dx-text-box>
   </div>
   <div class="dx-field-value dropdown">
-    <dx-drop-down-box
+    <dx-select-box
       valueExpr="type"
       displayExpr="type"
       placeholder="Chart Type"
       [dataSource]="chartTypes"
       (onOptionChanged)="onGridBoxOptionChanged($event)"
-    ></dx-drop-down-box>
-  </div>
-  <div class="dx-field-value dropdown">
-    <dx-drop-down-box
-      valueExpr="name"
-      displayExpr="name"
-      placeholder="Parameter"
-      [dataSource]="parameters"
-      (onOptionChanged)="onGridBoxOptionChanged($event)"
-    ></dx-drop-down-box>
+    ></dx-select-box>
   </div>
   <div class="dx-field-value">
     <dx-text-box placeholder="Target name..."></dx-text-box>
@@ -36,6 +27,14 @@
       [width]="120"
       (click)="showMap = true"
     ></dx-button>
+  </div>
+  <div class="dx-field-value dropdown">
+    <dx-select-box
+      valueExpr="id"
+      placeholder="Parameter"
+      [dataSource]="parameters"
+      displayExpr="name"
+    ></dx-select-box>
   </div>
   <div class="dx-field-value">
     <dx-button

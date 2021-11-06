@@ -4,7 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ChartConfigurationComponent } from './components/chart-configuration/chart-configuration.component';
-import {DxButtonModule, DxDropDownBoxModule, DxPopupModule, DxTextBoxModule} from "devextreme-angular";
+import {
+  DxButtonModule,
+  DxDropDownBoxModule,
+  DxPopupModule,
+  DxSelectBoxModule,
+  DxTextBoxModule
+} from "devextreme-angular";
 import { ConfiguratorComponent } from './components/configurator/configurator.component';
 import { MapComponent } from './components/map/map.component';
 
@@ -21,7 +27,8 @@ import { MapComponent } from './components/map/map.component';
     DxTextBoxModule,
     DxButtonModule,
     DxPopupModule,
-    DxDropDownBoxModule
+    DxDropDownBoxModule,
+    DxSelectBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

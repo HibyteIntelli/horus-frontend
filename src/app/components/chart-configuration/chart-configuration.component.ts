@@ -8,11 +8,11 @@ import {ChartTypeEnum} from "../../types";
 })
 export class ChartConfigurationComponent implements OnInit {
 
-  parameters: {name: string}[] = [
-    {name: 'Temperature'},
-    {name: 'Humidity'},
-    {name: 'Wind Speed'},
-    {name: 'Sea Ice Thickness'}
+  parameters: {id: number, name: string}[] = [
+    {id: 1, name: 'Temperature'},
+    {id: 2, name: 'Humidity'},
+    {id: 3, name: 'Wind Speed'},
+    {id: 4, name: 'Sea Ice Thickness'}
   ];
 
   @Input()
@@ -39,6 +39,7 @@ export class ChartConfigurationComponent implements OnInit {
   }
 
   onGridBoxOptionChanged($event: any){
+    console.log($event.value);
   }
 
 }

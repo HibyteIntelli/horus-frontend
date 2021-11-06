@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Dashboard} from "../../types";
 
 @Component({
   selector: 'app-configurator',
@@ -12,6 +13,8 @@ export class ConfiguratorComponent implements OnInit {
 
   noOfDisplays = 1;
 
+  newDashboard: Dashboard;
+
   constructor() {
   }
 
@@ -22,6 +25,8 @@ export class ConfiguratorComponent implements OnInit {
     this.noOfDisplays++;
   }
 
-  saveDetails(){}
+  saveDetails(){
+    console.log(this.newDashboard);
+  }
 
 }

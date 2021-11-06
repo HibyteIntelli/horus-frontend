@@ -20,6 +20,8 @@ export class ChartConfigurationComponent implements OnInit {
 
   @Output()
   addConfiguration = new EventEmitter();
+  @Output()
+  dashboardTitle = new EventEmitter();
 
   chartTypes = [
     {type: ChartTypeEnum.bar},
@@ -34,9 +36,7 @@ export class ChartConfigurationComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.parameters);
-  }
+  ngOnInit(): void {}
 
   onGridBoxOptionChanged($event: any){
     console.log($event.value);

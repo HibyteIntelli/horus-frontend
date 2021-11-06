@@ -1,3 +1,11 @@
-<div class="full" id="map">
-
-</div>
+<dx-popup
+  [showTitle]="true"
+  title="Chart Configurator"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="false"
+  container=".dx-viewport"
+  [(visible)]="visible"
+>
+  <div id="map"></div>
+</dx-popup>

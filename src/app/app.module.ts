@@ -13,6 +13,7 @@ import {
 } from "devextreme-angular";
 import { ConfiguratorComponent } from './components/configurator/configurator.component';
 import { MapComponent } from './components/map/map.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MapComponent } from './components/map/map.component';
     HeaderComponent,
     ChartConfigurationComponent,
     ConfiguratorComponent,
-    MapComponent
+    MapComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

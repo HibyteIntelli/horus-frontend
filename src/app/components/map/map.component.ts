@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Loader} from "@googlemaps/js-api-loader";
 import {styles} from "./mapstyles";
 @Component({
@@ -6,13 +6,20 @@ import {styles} from "./mapstyles";
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
 
   title = 'google-maps';
+
+  @Input()
+  visible: boolean;
 
   private map: google.maps.Map
 
   ngOnInit(): void {
+
+  }
+
+  initializeMap() {
     let loader = new Loader({
       apiKey: 'AIzaSyBR6A65P_BM9v4JMyY1ySFlWmwZghK0Fm0'
     })
@@ -34,6 +41,12 @@ export class MapComponent implements OnInit {
         map: this.map,
       });
     })
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['visible']) {
+      this.initializeMap();
+    }
   }
 
 }

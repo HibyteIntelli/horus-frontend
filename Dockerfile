@@ -14,7 +14,7 @@ RUN npm install
 COPY . /app
 
 #RUN export NODE_OPTIONS=--openssl-legacy-provider && ng build && npm install --ignore-scripts --prefer-offline
-RUN cd /app && node --max_old_space_size=6000 node_modules/@angular/cli/bin/ng build horus-frontend && ls -l -a && pwd
+RUN cd /app && node --max_old_space_size=6000 node_modules/@angular/cli/bin/ng build horus && ls -l -a && pwd
 RUN pwd && ls -l -a /app/dist/horus
 
 FROM httpd:2.4

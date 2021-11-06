@@ -1,1 +1,3 @@
-<p>home-page works!</p>
+<div *ngFor="let dashboard of dashboards" class="container">
+  <app-dashboard-data-card [dashboard]="dashboard"></app-dashboard-data-card>
+</div>

@@ -14,6 +14,12 @@ import {
 import { ConfiguratorComponent } from './components/configurator/configurator.component';
 import { MapComponent } from './components/map/map.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import {RouterModule} from "@angular/router";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "../app-routing.module";
+import {AuthInterceptor} from "./providers/auth.interceptor";
+import { DashboardDataCardComponent } from './components/dashboard-data-card/dashboard-data-card.component';
+import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +28,21 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ChartConfigurationComponent,
     ConfiguratorComponent,
     MapComponent,
-    HomePageComponent
+    HomePageComponent,
+    DashboardDataCardComponent,
+    DashboardPageComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     DxTextBoxModule,
     DxButtonModule,
     DxPopupModule,
     DxDropDownBoxModule,
-    DxSelectBoxModule
+    DxSelectBoxModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

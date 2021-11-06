@@ -39,7 +39,6 @@ export class ChartConfigurationComponent implements OnInit {
   ngOnInit(): void {}
 
   onGridBoxOptionChanged($event: any){
-    console.log($event.value);
   }
 
 }

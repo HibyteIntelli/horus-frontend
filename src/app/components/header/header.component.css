@@ -1,12 +1,14 @@
-.header{
+.header {
   color: #d4adcf;
   font-size: xx-large;
   margin-left: 5rem;
 }
-.container{
+
+.container {
   display: flex;
 }
-::ng-deep .dx-button{
+
+::ng-deep .dx-button {
   width: 120px;
   margin-left: auto;
   background: #d4adcf;
@@ -16,4 +18,8 @@
   border-radius: 10px;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.logo {
+  cursor: pointer;
 }

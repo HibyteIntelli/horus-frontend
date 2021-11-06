@@ -44,6 +44,7 @@ export class Alert {
 }
 
 export class Dashboard {
+  id?: number;
   team: Team;
   layout: Layout;
   name: string;

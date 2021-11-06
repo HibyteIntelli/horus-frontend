@@ -1,0 +1,13 @@
+.card {
+  border: 1px solid #d4adcf;
+  border-radius: 3px;
+  width: 250px;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.title {
+  font-size: x-large;
+  color: #d4adcf;
+  padding: 20px;
+}

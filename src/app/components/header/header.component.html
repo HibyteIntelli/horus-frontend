@@ -1,0 +1,12 @@
+<div class="container">
+<img src="assets/HORUS.png" width="200">
+  <dx-button
+    stylingMode="contained"
+    text="Configurator"
+    type="normal"
+    [width]="120"
+    (click)="openChartConfiguratorPopup()"
+  ></dx-button>
+</div>
+
+<app-configurator [visible] = popupVisible></app-configurator>

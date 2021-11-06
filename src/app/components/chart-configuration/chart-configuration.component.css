@@ -1,0 +1,20 @@
+.container {
+  margin-left: 5rem;
+}
+
+.parameter-chart-container {
+  display: flex;
+}
+
+::ng-deep .dx-field-value {
+  width: 100% !important;
+}
+
+::ng-deep .dx-field {
+  display: flex;
+}
+
+.dropdown{
+  width: 100%!important;
+  margin-right: 1rem;
+}

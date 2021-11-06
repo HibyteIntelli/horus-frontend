@@ -1,0 +1,6 @@
+::ng-deep.dx-overlay-content .dx-popup-content{
+  display: grid;
+}
+.save-button{
+  width: 100%!important;
+}

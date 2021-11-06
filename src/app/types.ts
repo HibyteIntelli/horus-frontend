@@ -2,8 +2,6 @@ export enum ChartTypeEnum {
   line = 'LINE_SERIES',
   range = 'RANGE_SERIES',
   circularGauge = 'CIRCULAR_GAUGE',
-  pie = 'PIE_CHART',
-  doughnut = 'DOUGHNUT_SERIES',
   bar = 'BAR_GAUGE'
 }
 
@@ -53,7 +51,7 @@ export class Dashboard {
 
 export class Chart {
   name: string;
-  chartType: ChartTypeEnum;
+  chartType: ChartType | undefined;
   target: Target;
   params: any;
 }
@@ -84,6 +82,6 @@ export class Layout {
 export class ChartType {
   name: string;
   size: string;
-  chartIdent: string;
+  chartIdent?: string;
   key: string;
 }

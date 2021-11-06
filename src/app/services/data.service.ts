@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Dashboard} from "../types";
+import {Chart, ChartType, Dashboard, Target, Location, Metric, Layout, Team} from "../types";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,35 @@ export class DataService {
   }
 
   addDashboard(dashboard: Dashboard) {
-    return this.httpClient.post(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/dashboard`, dashboard);
+    return this.httpClient.post<Dashboard>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/dashboard`, dashboard);
   }
+
+  addChart(chart: Chart) {
+    return this.httpClient.post<Chart>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/chart`, chart);
+  }
+
+  addTarget(target: Target) {
+    return this.httpClient.post<Target>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/target`, target);
+  }
+
+  getAllChartTypes() {
+    return this.httpClient.get<ChartType[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/chartType`);
+  }
+
+  addLocation(location: Location){
+    return this.httpClient.post<Location>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/location`, location);
+  }
+
+  addMetric(metric: Metric) {
+    return this.httpClient.post<Metric>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/metric`, metric);
+  }
+
+  addLayout(layout: Layout){
+    return this.httpClient.post<Layout>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/layout`, layout);
+  }
+
+  addTeam(team: Team) {
+    return this.httpClient.post<Team>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/team`, team);
+  }
+
 }

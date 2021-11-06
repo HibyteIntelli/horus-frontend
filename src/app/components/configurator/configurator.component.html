@@ -7,7 +7,13 @@
   container=".dx-viewport"
   [(visible)]="visible"
 >
-  <app-chart-configuration [noOfDisplays]="noOfDisplays" (addConfiguration)="addConfiguration()" (dashboardTitle)="newDashboard.name  = $event"></app-chart-configuration>
+  <app-chart-configuration [noOfDisplays]="noOfDisplays"
+                           (dashboardTitle)="newDashboard.name  = $event"
+                           (chartTitle)="chartTitle = $event"
+                           (chartType)="chartType = $event"
+                           (targetName)="targetName = $event"
+                           (parameter)="parameter = $event"
+                           (addConfiguration)="addConfiguration()"></app-chart-configuration>
 
   <dx-button
     stylingMode="contained"

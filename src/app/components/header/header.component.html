@@ -9,4 +9,4 @@
   ></dx-button>
 </div>
 
-<app-configurator [visible] = popupVisible></app-configurator>
+<app-configurator [visible] = "popupVisible" (newDashboardEmitter)="newDashboard.emit($event)"></app-configurator>

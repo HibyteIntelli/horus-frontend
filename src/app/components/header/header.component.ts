@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,6 +7,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  @Output()
+  newDashboard = new EventEmitter()
 
   popupVisible = false;
 

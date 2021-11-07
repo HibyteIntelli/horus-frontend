@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://horus.hq-hydra.hibyte.ro',
+  apiUrl: 'http://localhost:8080',
   scopeKey: 'point'
 };
 

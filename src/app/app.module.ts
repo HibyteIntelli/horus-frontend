@@ -49,6 +49,7 @@ import {DatePipe} from "@angular/common";
     DxTextBoxModule,
     DxButtonModule,
     DxPopupModule,
+    FormsModule,
     DxDropDownBoxModule,
     DxSelectBoxModule,
     HttpClientModule,

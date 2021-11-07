@@ -1,3 +1,7 @@
+<!--<div class="container">-->
+<!--  <button (click)="initializeMap()">Reset</button>-->
+<!--</div>-->
+
 <dx-popup
   [showTitle]="true"
   title="Chart Configurator"
@@ -7,5 +11,11 @@
   container=".dx-viewport"
   [(visible)]="visible"
 >
+
+  <button (click)="initializeMap()" class="reset-button">Reset</button>
+  <input class="input-n-box" type="text" [(ngModel)]="name">
+  <button (click)="addPoints()" class="add-button">Add</button>
   <div id="map"></div>
 </dx-popup>
+
+

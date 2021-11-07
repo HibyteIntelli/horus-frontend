@@ -50,6 +50,7 @@ export class Dashboard {
 }
 
 export class Chart {
+  id?: number;
   name: string;
   chartType: ChartType | undefined;
   target: Target;
@@ -79,6 +80,7 @@ export class Layout {
 }
 
 export class ChartType {
+  id?: number;
   name: string;
   size: string;
   chartIdent?: string;

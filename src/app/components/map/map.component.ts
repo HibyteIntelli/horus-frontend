@@ -69,11 +69,6 @@ export class MapComponent implements OnInit, OnChanges {
       ts.location.points = this.listOfPoints;
       ts.location.name = this.name;
       this.service.addTarget(ts);
-    } else {
-      this.service.getImages(744).subscribe(res => {
-        let ss = res as Array<TargetSat>;
-        console.log(ss[0].assets);
-      });
     }
 
   }

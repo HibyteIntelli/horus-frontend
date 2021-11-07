@@ -3,6 +3,7 @@ export enum ChartTypeEnum {
   range = 'RANGE_SERIES',
   circularGauge = 'CIRCULAR_GAUGE',
   bar = 'BAR_GAUGE',
+  image = 'Image',
   polar = 'POLAR_CHART'
 }
 
@@ -91,5 +92,5 @@ export class ChartType {
 export class TargetSat {
   target: any;
   time: Date;
-  assets: []
+  assets: {id: number}[]
 }

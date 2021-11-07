@@ -27,6 +27,9 @@ import {RangeSeriesComponent} from './components/charts/range-series/range-serie
 import {CircularGaugeComponent} from './components/charts/circular-gauge/circular-gauge.component';
 import {BarGaugeComponent} from './components/charts/bar-gauge/bar-gauge.component';
 import {DatePipe} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import { CarouselComponent } from './components/charts/carousel/carousel.component';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -41,10 +44,12 @@ import {DatePipe} from "@angular/common";
     LineSeriesComponent,
     RangeSeriesComponent,
     CircularGaugeComponent,
-    BarGaugeComponent
+    BarGaugeComponent,
+    CarouselComponent
   ],
   imports: [
     AppRoutingModule,
+    CarouselModule,
     BrowserModule,
     DxTextBoxModule,
     DxButtonModule,

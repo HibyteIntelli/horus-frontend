@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ChartTypeEnum, Layout} from "../../types";
+import {ChartTypeEnum} from "../../types";
 import {DataService} from "../../services/data.service";
 
 @Component({
@@ -37,7 +37,8 @@ export class ChartConfigurationComponent implements OnInit {
     {type: ChartTypeEnum.bar},
     {type: ChartTypeEnum.circularGauge},
     {type: ChartTypeEnum.line},
-    {type: ChartTypeEnum.range}
+    {type: ChartTypeEnum.range},
+    {type: ChartTypeEnum.image}
   ];
   showMap = false;
 

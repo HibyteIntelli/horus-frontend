@@ -16,7 +16,7 @@
       ></dx-select-box>
     </div>
   </div>
-  <div class="carousel"></div>
+
   <dx-button
     class="save-layout-button"
     text="Save"
@@ -37,6 +37,7 @@
       <app-line-series *ngIf="typeMatches('LINE_SERIES', chart)" class="chart" style="zoom: 0.55; float: left" [id]="chart.id"></app-line-series>
       <app-range-series *ngIf="typeMatches('RANGE_SERIES', chart)" class="chart" style="zoom: 0.6; float: left" [id]="chart.id"></app-range-series>
     </div>
+    <app-carousel></app-carousel>
   </div>
 </div>
 

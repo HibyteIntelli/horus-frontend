@@ -3,6 +3,7 @@ export enum ChartTypeEnum {
   range = 'RANGE_SERIES',
   circularGauge = 'CIRCULAR_GAUGE',
   bar = 'BAR_GAUGE',
+  image = 'Image',
   polar = 'POLAR_CHART'
 }
 
@@ -73,7 +74,6 @@ export class Location {
 export class LocationPoint {
   latitude: string;
   longitude: string;
-  height: string;
 }
 
 export class Layout {
@@ -87,4 +87,10 @@ export class ChartType {
   size: string;
   chartIdent?: string;
   key: string;
+}
+
+export class TargetSat {
+  target: any;
+  time: Date;
+  assets: {id: number}[]
 }

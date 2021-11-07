@@ -70,8 +70,7 @@ export class MapComponent implements OnInit, OnChanges {
       ts.location.name = this.name;
       this.service.addTarget(ts);
     }
-
-  }
+    }
 
   createMarker(location: google.maps.LatLng) {
     let data = new LocationPoint();
@@ -85,6 +84,8 @@ export class MapComponent implements OnInit, OnChanges {
       map: this.map,
     });
   }
+
+
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['visible']) {

@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DataService} from "../../services/data.service";
-import {Chart, ChartType, Dashboard} from "../../types";
+import {Chart, ChartType, Dashboard, TargetSat} from "../../types";
 import {DatePipe} from "@angular/common";
 
 @Component({
@@ -39,7 +39,6 @@ export class DashboardPageComponent implements OnInit {
     }
 
     this.getChartTypes();
-
   }
 
   sortArray() {

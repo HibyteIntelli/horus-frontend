@@ -79,4 +79,20 @@ export class DataService {
   getBarRangeValues(chartIdent: number) {
     return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/barRange?chartId=${chartIdent}`);
   }
+
+  getLayouts() {
+    return this.httpClient.get<any[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/layout`);
+  }
+
+  getGaugeValue(chartIdent: number) {
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/circularGauge?chartId=${chartIdent}`);
+  }
+
+  getLineChartValues(chartIdent: number) {
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/lineSeries?chartId=${chartIdent}`);
+  }
+
+  getRangeChartValues(chartIdent: number) {
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/rangeSeries?chartId=${chartIdent}`);
+  }
 }

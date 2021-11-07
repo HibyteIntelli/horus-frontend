@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DataService} from "../../services/data.service";
 import {Chart, ChartType, Dashboard} from "../../types";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard-page',
@@ -9,7 +10,6 @@ import {Chart, ChartType, Dashboard} from "../../types";
   styleUrls: ['./dashboard-page.component.css']
 })
 export class DashboardPageComponent implements OnInit {
-
 
   editMode: string;
   dashboardId: number;
@@ -19,7 +19,7 @@ export class DashboardPageComponent implements OnInit {
   chartsOrder: Map<number, string> = new Map();
 
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) {
+  constructor(private route: ActivatedRoute, private dataService: DataService, private datePipe: DatePipe) {
     this.route.queryParams.subscribe(response => {
       this.dashboardId = response['id'];
       this.editMode = response['editMode'];
@@ -66,11 +66,14 @@ export class DashboardPageComponent implements OnInit {
   saveDashboardCharts(charts: any) {
     this.dashboard.charts = charts;
     this.editMode = 'false';
-    console.log(this.dashboard.charts);
   }
 
   typeMatches(type: string, chart: Chart) {
     return this.chartTypes.find(chartType => chartType.id === chart.chartType)?.key === type;
+  }
+
+  getHour() {
+    return this.datePipe.transform(new Date(), 'HH:mm')
   }
 
 }

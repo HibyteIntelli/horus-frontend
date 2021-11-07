@@ -8,6 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class BarGaugeComponent implements OnInit {
 
   @Input()
+  id: number;
+
   data: any;
 
   constructor() {

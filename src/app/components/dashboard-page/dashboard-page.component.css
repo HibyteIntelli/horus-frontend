@@ -1,5 +1,5 @@
 .container {
-  margin-top: 5rem;
+  margin-top: 3rem;
   display: block;
   margin-left: 5rem;
   margin-right: 5rem;
@@ -24,4 +24,12 @@
 
 .chart {
   width: 45%;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.hour {
+  color: #06ba63;
+  font-size: 60px;
+  margin: auto;
 }

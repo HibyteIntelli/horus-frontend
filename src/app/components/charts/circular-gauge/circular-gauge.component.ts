@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-circular-gauge',
@@ -8,6 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CircularGaugeComponent implements OnInit {
 
   @Input()
+  id: number;
+
   data: any;
 
   size = {
@@ -15,10 +18,15 @@ export class CircularGaugeComponent implements OnInit {
     height: '200px'
   };
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     console.log('circular_gauge');
+  }
+
+
+  getData() {
+    this.dataService.getGaugeValue(this.id).subscribe(response => this.data = response.data.value);
   }
 
 }

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-line-series',
@@ -8,13 +9,20 @@ import {Component, Input, OnInit} from '@angular/core';
 export class LineSeriesComponent implements OnInit {
 
   @Input()
+  id: number;
+
   data: any;
 
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     console.log('line_series');
+  }
+
+
+  getData() {
+    this.dataService.getLineChartValues(this.id).subscribe(response => console.log(response));
   }
 
 }

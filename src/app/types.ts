@@ -51,6 +51,7 @@ export class Dashboard {
 }
 
 export class Chart {
+  id?: number;
   name: string;
   chartType: ChartType | undefined;
   target: Target | undefined;

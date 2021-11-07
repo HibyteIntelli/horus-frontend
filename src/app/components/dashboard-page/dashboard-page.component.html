@@ -25,12 +25,17 @@
 </div>
 
 <div class="container" *ngIf="editMode === 'false'">
+  <div class="d-flex h-150">
+    <div class="chart d-flex mb-3rem">
+     <div class="hour">{{getHour()}}</div>
+    </div>
+  </div>
   <div class="d-block">
     <div *ngFor="let chart of dashboardCharts" id="chart-container">
-      <app-bar-gauge *ngIf="typeMatches('BAR_GAUGE', chart)" class="chart" style="zoom: 0.7; float: left"></app-bar-gauge>
-      <app-circular-gauge *ngIf="typeMatches('CIRCULAR_GAUGE', chart)" class="chart" style="zoom: 0.8; float: left"></app-circular-gauge>
-      <app-line-series *ngIf="typeMatches('LINE_SERIES', chart)" class="chart" style="zoom: 0.7; float: left"></app-line-series>
-      <app-range-series *ngIf="typeMatches('RANGE_SERIES', chart)" class="chart" style="zoom: 0.7; float: left"></app-range-series>
+      <app-bar-gauge *ngIf="typeMatches('BAR_GAUGE', chart)" class="chart" style="zoom: 0.9; float: left" [id]="chart.id"></app-bar-gauge>
+      <app-circular-gauge *ngIf="typeMatches('CIRCULAR_GAUGE', chart)" class="chart" style="zoom: 0.8; float: left" [id]="chart.id"></app-circular-gauge>
+      <app-line-series *ngIf="typeMatches('LINE_SERIES', chart)" class="chart" style="zoom: 0.55; float: left" [id]="chart.id"></app-line-series>
+      <app-range-series *ngIf="typeMatches('RANGE_SERIES', chart)" class="chart" style="zoom: 0.6; float: left" [id]="chart.id"></app-range-series>
     </div>
   </div>
 </div>

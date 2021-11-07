@@ -42,7 +42,7 @@ export class ConfiguratorComponent implements OnInit {
   buildCharts() {
     this.charts.push({
       name: this.chartTitle,
-      params: {parameter: this.parameter},
+      params: {metric: this.parameter},
       chartType: this.getChartType(),
       target: this.getTarget()
     });

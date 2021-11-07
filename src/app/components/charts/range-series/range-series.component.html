@@ -1,7 +1,7 @@
 <dx-chart
   id="chart"
   palette="violet"
-  title="Crude Oil Prices in 2005"
+  [dataSource]="data"
 >
   <dxo-common-series-settings
     argumentField="date"
@@ -18,14 +18,4 @@
     verticalAlignment="bottom"
     horizontalAlignment="center"
   ></dxo-legend>
-  <dxi-series
-    rangeValue1Field="aVal1"
-    rangeValue2Field="aVal2"
-    name="ANS West Coast"
-  ></dxi-series>
-  <dxi-series
-    rangeValue1Field="tVal1"
-    rangeValue2Field="tVal2"
-    name="West Texas Intermediate"
-  ></dxi-series>
 </dx-chart>

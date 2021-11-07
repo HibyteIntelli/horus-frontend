@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-range-series',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RangeSeriesComponent implements OnInit {
 
+  @Input()
+  data: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log('range-series');
   }
 
 }

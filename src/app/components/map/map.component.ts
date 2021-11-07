@@ -46,7 +46,6 @@ export class MapComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['visible']) {
       this.initializeMap();
-      console.clear();
     }
   }
 

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Chart, Dashboard, Layout, Metric, Target, Team, Location, ChartType} from "../../types";
 import {DataService} from "../../services/data.service";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'app-configurator',
@@ -24,6 +25,7 @@ export class ConfiguratorComponent implements OnInit {
   charts: Chart[] = [];
   allChartTypes: ChartType[] = [];
   formattedCharts: Chart[] = [];
+  layout: Layout;
 
   constructor(private dataService: DataService) {
   }
@@ -47,6 +49,9 @@ export class ConfiguratorComponent implements OnInit {
   }
 
   getChartType() {
+    console.log(this.chartType)
+    console.log(this.allChartTypes.find(chartType => chartType.key === this.chartType));
+    console.log(this.allChartTypes);
     return this.allChartTypes.find(chartType => chartType.key === this.chartType);
   }
 
@@ -59,60 +64,67 @@ export class ConfiguratorComponent implements OnInit {
   }
 
   saveDetails() {
-    this.buildCharts();
     this.parseAndChangesChartData();
   }
 
   parseAndChangesChartData() {
+    this.newDashboard.charts = [];
     this.charts.forEach(chart => {
+      // @ts-ignore
       chart.target.metrics = [];
       this.buildMetrics(chart);
-      this.dataService.addLocation(chart.target.location).subscribe(response => {
-        chart.target.location = response;
-        this.dataService.addTarget(chart.target).subscribe(response => {
-          chart.target = response;
-          this.dataService.addChart(chart).subscribe(response => {
-            this.formattedCharts.push(response);
-            this.buildData();
-            this.saveDashboard();
-          });
-        })
-      });
+      // @ts-ignore
+      this.dataService.addLocation(chart.target.location)
+        .subscribe(response => {
+          // @ts-ignore
+          chart.target.location = response;
+          // @ts-ignore
+          this.dataService.addTarget(chart.target).subscribe(response => {
+            chart.target = response;
+            this.dataService.addChart(chart).subscribe(response => {
+              this.newDashboard.charts.push(response);
+            });
+          })
+
+        });
     });
+    this.buildData();
+    setTimeout(() => {
+      this.saveDashboard();
+    }, 1000);
   }
 
   buildMetrics(chart: Chart) {
+    // @ts-ignore
     chart.target.metrics.forEach(metric => {
       this.dataService.addMetric(metric).subscribe(response => {
+        // @ts-ignore
         chart.target.metrics.push(response);
       });
     });
   }
 
   saveDashboard() {
-    this.newDashboard.charts = this.formattedCharts;
-    this.dataService.addDashboard(this.newDashboard).subscribe(response => {
+    this.dataService.addDashboard(this.newDashboard).toPromise().then(response => {
+      // @ts-ignore
       this.newDashboardEmitter.emit(response.id);
       this.visible = false;
     });
   }
 
+  getNewDashboardCharts() {
+    this.newDashboard.charts = this.formattedCharts;
+    this.formattedCharts.forEach(chart => this.newDashboard.charts.push(chart));
+  }
+
   buildData() {
-    this.saveDashboardLayout();
+    this.newDashboard.layout = this.layout;
     this.saveDashboardTeam();
   }
 
-  saveDashboardLayout() {
-    this.dataService.addLayout(new Layout()).subscribe(response => {
-      const data: any = response;
-      this.newDashboard.layout = data;
-    })
-  }
-
   saveDashboardTeam() {
-    this.dataService.addTeam(new Team()).subscribe(response => {
-      const data: any = response;
-      this.newDashboard.team = data;
+    this.dataService.addTeam(new Team()).toPromise().then(response => {
+      this.newDashboard.team = response;
     })
   }
 }

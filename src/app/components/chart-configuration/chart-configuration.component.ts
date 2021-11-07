@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ChartType, ChartTypeEnum} from "../../types";
+import {ChartTypeEnum, Layout} from "../../types";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-chart-configuration',
@@ -24,6 +25,7 @@ export class ChartConfigurationComponent implements OnInit {
   @Output()
   parameter = new EventEmitter();
 
+
   parameters: { name: string }[] = [
     {name: 'Temperature'},
     {name: 'Humidity'},
@@ -39,7 +41,7 @@ export class ChartConfigurationComponent implements OnInit {
   ];
   showMap = false;
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-bar-gauge',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarGaugeComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  data: any;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    console.log('bar-gauge');
   }
 
 }

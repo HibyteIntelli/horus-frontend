@@ -1,24 +1,18 @@
 .container {
   margin-top: 5rem;
-  display: flex;
+  display: block;
   margin-left: 5rem;
   margin-right: 5rem;
 }
 
-.first-container {
+.chart-container {
   border: 3px dashed #d4adcf;
   height: 200px;
   background: #92dce5;
+  width: 45%;
   margin-bottom: 1rem;
   margin-right: 1rem;
-}
-
-.second-container {
-  border: 3px dashed #d4adcf;
-  height: 200px;
-  background: #92dce5;
-  margin-bottom: 1rem;
-  margin-right: 10rem;
+  float: left;
 }
 
 .alert-button {
@@ -26,4 +20,8 @@
   margin-top: 5rem;
   width: 50px;
   margin-left: 1rem;
+}
+
+.chart {
+  width: 45%;
 }

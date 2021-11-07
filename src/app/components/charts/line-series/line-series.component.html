@@ -1,17 +1,12 @@
 <dx-chart
   palette="violet"
   title="Architecture Share Over Time (Count)"
+  [dataSource]="data"
 >
   <dxi-series valueField="smp" name="SMP"></dxi-series>
   <dxi-series valueField="mmp" name="MMP"></dxi-series>
   <dxi-series valueField="cnstl" name="Cnstl"></dxi-series>
   <dxi-series valueField="cluster" name="Cluster"></dxi-series>
-<!--  <dxo-common-series-settings-->
-<!--    #seriesSettings-->
-<!--    argumentField="year"-->
-<!--    [type]="types[0]"-->
-<!--  >-->
-<!--  </dxo-common-series-settings>-->
   <dxo-margin [bottom]="20"></dxo-margin>
   <dxo-common-axis-settings>
     <dxo-grid [visible]="true"></dxo-grid>

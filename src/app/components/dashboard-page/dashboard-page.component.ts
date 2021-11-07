@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DataService} from "../../services/data.service";
-import {Dashboard} from "../../types";
+import {Chart, ChartType, Dashboard} from "../../types";
 
 @Component({
   selector: 'app-dashboard-page',
@@ -11,10 +11,13 @@ import {Dashboard} from "../../types";
 export class DashboardPageComponent implements OnInit {
 
 
-  editMode: boolean;
+  editMode: string;
   dashboardId: number;
   dashboard: Dashboard;
   dashboardCharts: any[] = [];
+  chartTypes: ChartType[] = [];
+  chartsOrder: Map<number, string> = new Map();
+
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.route.queryParams.subscribe(response => {
@@ -28,24 +31,46 @@ export class DashboardPageComponent implements OnInit {
       this.dashboard = response;
       this.dashboard.charts.forEach(chartId => this.dataService.getChartById(chartId).subscribe(response => this.dashboardCharts.push(response)));
     });
+
     if (this.editMode) {
-      this.setSmallContainersSize();
-      this.setLargeContainersSize();
+      this.setContainerSize();
     }
+
+    this.getChartTypes();
   }
 
-  setSmallContainersSize() {
-    // @ts-ignore
-    document.getElementById('small-container1').style.width = `${window.innerWidth / 3.5}px`;
-    // @ts-ignore
-    document.getElementById('small-container2').style.width = `${window.innerWidth / 3.5}px`;
+  getChartTypes() {
+    this.dataService.getAllChartTypes().subscribe(response => this.chartTypes = response);
   }
 
-  setLargeContainersSize() {
+  setContainerSize() {
     // @ts-ignore
-    document.getElementById('large-container1').style.width = `${window.innerWidth / 2}px`;
+    document.getElementById('container')?.style.width = `${window.innerWidth / 2.5}px`;
     // @ts-ignore
-    document.getElementById('large-container2').style.width = `${window.innerWidth / 2}px`;
+    document.getElementById('chart-container')?.style.width = `${window.innerWidth / 2.5}px`
+  }
+
+  selectChart($event: any, i: number) {
+    this.chartsOrder.set(i, $event.selectedItem);
+  }
+
+  saveLayout() {
+    let charts: any = [];
+    this.chartsOrder.forEach(chartOrder => {
+      const data: any = chartOrder;
+      charts.push(data);
+    });
+    this.saveDashboardCharts(charts);
+  }
+
+  saveDashboardCharts(charts: any) {
+    this.dashboard.charts = charts;
+    this.editMode = 'false';
+    console.log(this.dashboard.charts);
+  }
+
+  typeMatches(type: string, chart: Chart) {
+    return this.chartTypes.find(chartType => chartType.id === chart.chartType)?.key === type;
   }
 
 }

@@ -34,7 +34,7 @@ export class DataService {
     return this.httpClient.get<ChartType[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/chartType`);
   }
 
-  addLocation(location: Location){
+  addLocation(location: Location | undefined){
     return this.httpClient.post<Location>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/location`, location);
   }
 
@@ -52,5 +52,9 @@ export class DataService {
 
   getChartById(id: any) {
     return this.httpClient.get<Chart[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/item/${id}`);
+  }
+
+  getLayouts() {
+    return this.httpClient.get<any[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/layout`);
   }
 }

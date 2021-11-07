@@ -2,7 +2,8 @@ export enum ChartTypeEnum {
   line = 'LINE_SERIES',
   range = 'RANGE_SERIES',
   circularGauge = 'CIRCULAR_GAUGE',
-  bar = 'BAR_GAUGE'
+  bar = 'BAR_GAUGE',
+  polar = 'POLAR_CHART'
 }
 
 export enum LocationType {
@@ -43,7 +44,7 @@ export class Alert {
 
 export class Dashboard {
   id?: number;
-  team: Team;
+  team: Team | undefined;
   layout: Layout;
   name: string;
   charts: Chart[];
@@ -52,13 +53,13 @@ export class Dashboard {
 export class Chart {
   name: string;
   chartType: ChartType | undefined;
-  target: Target;
+  target: Target | undefined;
   params: any;
 }
 
 export class Target {
   name: string;
-  location: Location;
+  location: Location | undefined;
   metrics: Metric[];
 }
 
@@ -80,6 +81,7 @@ export class Layout {
 }
 
 export class ChartType {
+  id?: number;
   name: string;
   size: string;
   chartIdent?: string;

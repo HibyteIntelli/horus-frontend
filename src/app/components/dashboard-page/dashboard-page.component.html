@@ -1,25 +1,37 @@
 <app-header></app-header>
 <dx-button
-  *ngIf="!editMode"
+  [disabled]="editMode === 'true'"
   class="alert-button"
   text="!">
 </dx-button>
-<div class="container">
-  <div class="d-grid">
-    <div class="first-container" id="small-container1">
+<div class="container" *ngIf="editMode === 'true'">
+  <div class="d-block">
+    <div *ngFor="let chart of dashboardCharts; index as i" id="container" class="chart-container">
       <dx-select-box
         valueExpr="name"
-        displayExpr="name"
         placeholder="Chart"
         [dataSource]="dashboardCharts"
+        (onSelectionChanged)="selectChart($event, i)"
+        displayExpr="name"
       ></dx-select-box>
     </div>
-    <div class="first-container" id="small-container2"></div>
-  </div>
-  <div class="d-grid">
-    <div class="second-container" id="large-container1">
-    </div>
-    <div class="second-container" id="large-container2"></div>
   </div>
   <div class="carousel"></div>
+  <dx-button
+    class="save-layout-button"
+    text="Save"
+    (onClick)="saveLayout()">
+  </dx-button>
 </div>
+
+<div class="container" *ngIf="editMode === 'false'">
+  <div class="d-block">
+    <div *ngFor="let chart of dashboardCharts" id="chart-container">
+      <app-bar-gauge *ngIf="typeMatches('BAR_GAUGE', chart)" class="chart" style="zoom: 0.7; float: left"></app-bar-gauge>
+      <app-circular-gauge *ngIf="typeMatches('CIRCULAR_GAUGE', chart)" class="chart" style="zoom: 0.8; float: left"></app-circular-gauge>
+      <app-line-series *ngIf="typeMatches('LINE_SERIES', chart)" class="chart" style="zoom: 0.7; float: left"></app-line-series>
+      <app-range-series *ngIf="typeMatches('RANGE_SERIES', chart)" class="chart" style="zoom: 0.7; float: left"></app-range-series>
+    </div>
+  </div>
+</div>
+

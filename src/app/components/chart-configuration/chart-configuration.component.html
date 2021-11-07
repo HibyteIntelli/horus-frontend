@@ -1,11 +1,14 @@
 <div class="dx-field">
   <div class="dx-field-value">
-    <dx-text-box placeholder="Dashboard title..." (onChange)="dashboardTitle.emit($event.event.target.value)"></dx-text-box>
+    <dx-text-box placeholder="Dashboard title..."
+                 (onChange)="dashboardTitle.emit($event.event.target.value)"></dx-text-box>
   </div>
 </div>
+
 <div class="dx-field" *ngFor="let index of [].constructor(noOfDisplays)">
   <div class="dx-field-value">
-    <dx-text-box placeholder="Chart title..." (onChange)="chartTitle.emit($event.event.target.value)" class="dropdown"></dx-text-box>
+    <dx-text-box placeholder="Chart title..." (onChange)="chartTitle.emit($event.event.target.value)"
+                 class="dropdown"></dx-text-box>
   </div>
   <div class="dx-field-value dropdown">
     <dx-select-box
@@ -31,7 +34,8 @@
   </div>
   <div class="dx-field-value dropdown">
     <dx-select-box
-      valueExpr="id"
+      [value]="parameter"
+      valueExpr="name"
       placeholder="Parameter"
       [dataSource]="parameters"
       (onSelectionChanged)="emitParameter($event)"

@@ -21,12 +21,12 @@ export class CircularGaugeComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log('circular_gauge');
+    this.getData();
   }
 
 
   getData() {
-    this.dataService.getGaugeValue(this.id).subscribe(response => this.data = response.data.value);
+    this.dataService.getGaugeValue(this.id).subscribe(response => this.data = response.data[response.data.length - 1].value);
   }
 
 }

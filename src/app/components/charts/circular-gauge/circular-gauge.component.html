@@ -1,10 +1,11 @@
+<div class="title">Wind speed</div>
 <dx-circular-gauge id="gauge" [value]="data">
-  <dxo-scale [startValue]="10" [endValue]="150" [tickInterval]="10">
+  <dxo-scale [startValue]="10" [endValue]="110" [tickInterval]="10">
     <dxo-label [useRangeColors]="true"></dxo-label>
   </dxo-scale>
   <dxo-range-container palette="pastel">
-    <dxi-range [startValue]="10" [endValue]="70"></dxi-range>
-    <dxi-range [startValue]="70" [endValue]="120"></dxi-range>
-    <dxi-range [startValue]="120" [endValue]="150"></dxi-range>
+    <dxi-range [startValue]="10" [endValue]="50"></dxi-range>
+    <dxi-range [startValue]="50" [endValue]="80"></dxi-range>
+    <dxi-range [startValue]="80" [endValue]="110"></dxi-range>
   </dxo-range-container>
 </dx-circular-gauge>

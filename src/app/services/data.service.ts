@@ -71,4 +71,8 @@ export class DataService {
   getRangeChartValues(chartIdent: number) {
     return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/rangeSeries?chartId=${chartIdent}`);
   }
+
+  getBarRangeValues(chartIdent: number) {
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/barRange?chartId=${chartIdent}`);
+  }
 }

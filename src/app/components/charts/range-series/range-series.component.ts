@@ -16,11 +16,13 @@ export class RangeSeriesComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log('range-series');
+    this.getData();
   }
 
   getData(){
-    this.dataService.getRangeChartValues(this.id).subscribe(response => console.log(response));
+    this.dataService.getRangeChartValues(this.id).subscribe(response => {
+      this.data = response.data;
+    });
   }
 
 }

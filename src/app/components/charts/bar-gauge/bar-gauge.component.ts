@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-bar-gauge',
@@ -12,11 +13,16 @@ export class BarGaugeComponent implements OnInit {
 
   data: any;
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {
-    console.log('bar-gauge');
+  }
+
+  getData() {
+    this.dataService.getBarRangeValues(this.id).subscribe(response => {
+      this.data = response.data;
+    });
   }
 
 }

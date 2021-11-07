@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Chart, Dashboard, Layout, Metric, Target, Team, Location, ChartType} from "../../types";
 import {DataService} from "../../services/data.service";
-import {delay} from "rxjs";
 
 @Component({
   selector: 'app-configurator',
@@ -49,9 +48,6 @@ export class ConfiguratorComponent implements OnInit {
   }
 
   getChartType() {
-    console.log(this.chartType)
-    console.log(this.allChartTypes.find(chartType => chartType.key === this.chartType));
-    console.log(this.allChartTypes);
     return this.allChartTypes.find(chartType => chartType.key === this.chartType);
   }
 

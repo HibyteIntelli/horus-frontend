@@ -17,12 +17,14 @@ export class LineSeriesComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log('line_series');
+    this.getData();
   }
 
 
   getData() {
-    this.dataService.getLineChartValues(this.id).subscribe(response => console.log(response));
+    this.dataService.getLineChartValues(this.id).subscribe(response => {
+      this.data = response.data;
+    });
   }
 
 }

@@ -29,7 +29,9 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getDashboardById(this.dashboardId).subscribe(response => {
       this.dashboard = response;
-      this.dashboard.charts.forEach(chartId => this.dataService.getChartById(chartId).subscribe(response => this.dashboardCharts.push(response)));
+      this.dashboard.charts.forEach(chartId => this.dataService.getChartById(chartId).subscribe(response => {
+        this.dashboardCharts.push(response);
+      }));
     });
 
     if (this.editMode) {
@@ -37,6 +39,14 @@ export class DashboardPageComponent implements OnInit {
     }
 
     this.getChartTypes();
+
+  }
+
+  sortArray() {
+    this.dashboardCharts[0] = this.dashboardCharts.find(chart => chart?.id === 1073);
+    this.dashboardCharts[1] = this.dashboardCharts.find(chart => chart?.id === 1074);
+    this.dashboardCharts[2] = this.dashboardCharts.find(chart => chart?.id === 1075);
+    this.dashboardCharts[3] = this.dashboardCharts.find(chart => chart?.id === 1076);
   }
 
   getChartTypes() {

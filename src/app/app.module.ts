@@ -21,7 +21,7 @@ import {AppRoutingModule} from "../app-routing.module";
 import {AuthInterceptor} from "./providers/auth.interceptor";
 import {DashboardDataCardComponent} from './components/dashboard-data-card/dashboard-data-card.component';
 import {DashboardPageComponent} from './components/dashboard-page/dashboard-page.component';
-import {DxiItemModule} from "devextreme-angular/ui/nested";
+import {DxiItemModule, DxiSeriesModule} from "devextreme-angular/ui/nested";
 import {LineSeriesComponent} from './components/charts/line-series/line-series.component';
 import {RangeSeriesComponent} from './components/charts/range-series/range-series.component';
 import {CircularGaugeComponent} from './components/charts/circular-gauge/circular-gauge.component';
@@ -55,7 +55,8 @@ import {DatePipe} from "@angular/common";
     DxiItemModule,
     DxBarGaugeModule,
     DxCircularGaugeModule,
-    DxChartModule
+    DxChartModule,
+    DxiSeriesModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     DatePipe],

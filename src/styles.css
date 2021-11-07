@@ -16,5 +16,11 @@
 }
 
 .mb-3rem {
-  margin-bottom: 3rem!important;
+  margin-bottom: 3rem !important;
+}
+
+.title {
+  color: #f5fff9;
+  font-size: 30px;
+  margin-left: 30px;
 }

@@ -1,9 +1,5 @@
 <app-header></app-header>
-<dx-button
-  [disabled]="editMode === 'true'"
-  class="alert-button"
-  text="!">
-</dx-button>
+
 <div class="container" *ngIf="editMode === 'true'">
   <div class="d-block">
     <div *ngFor="let chart of dashboardCharts; index as i" id="container" class="chart-container">

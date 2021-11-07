@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ChartConfigurationComponent } from './components/chart-configuration/chart-configuration.component';
 import {
-  DxButtonModule,
+  DxBarGaugeModule,
+  DxButtonModule, DxChartModule, DxCircularGaugeModule,
   DxDropDownBoxModule,
   DxPopupModule,
   DxSelectBoxModule,
@@ -20,6 +21,7 @@ import {AppRoutingModule} from "../app-routing.module";
 import {AuthInterceptor} from "./providers/auth.interceptor";
 import { DashboardDataCardComponent } from './components/dashboard-data-card/dashboard-data-card.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
+import {DxiItemModule} from "devextreme-angular/ui/nested";
 import {FormsModule} from "@angular/forms";
 
 @NgModule({
@@ -31,18 +33,22 @@ import {FormsModule} from "@angular/forms";
     MapComponent,
     HomePageComponent,
     DashboardDataCardComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    FormsModule,
     DxTextBoxModule,
     DxButtonModule,
     DxPopupModule,
+    FormsModule,
     DxDropDownBoxModule,
     DxSelectBoxModule,
-    HttpClientModule
+    HttpClientModule,
+    DxiItemModule,
+    DxBarGaugeModule,
+    DxCircularGaugeModule,
+    DxChartModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

@@ -84,3 +84,9 @@ export class ChartType {
   chartIdent?: string;
   key: string;
 }
+
+export class TargetSat {
+  target: any;
+  time: Date;
+  assets: []
+}

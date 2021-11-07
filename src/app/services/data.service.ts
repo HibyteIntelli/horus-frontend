@@ -50,4 +50,11 @@ export class DataService {
     return this.httpClient.post<Team>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/team`, team);
   }
 
+  getChartById(id: any) {
+    return this.httpClient.get<Chart[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/item/${id}`);
+  }
+
+  getImages(id: number) {
+    return this.httpClient.get(`${environment.apiUrl}/api/spoql/items?q=at '${environment.scopeKey}' select item from 'targetSatImages' where %7B property 'target' eq '${id}' %7D`);
+  }
 }

@@ -3,7 +3,7 @@ import {Loader} from "@googlemaps/js-api-loader";
 import {styles} from "./mapstyles";
 import DirectionsService = google.maps.DirectionsService;
 import DirectionsRenderer = google.maps.DirectionsRenderer;
-import {Location, LocationPoint, Target} from "../../types";
+import {Location, LocationPoint, Target, TargetSat} from "../../types";
 import {DataService} from "../../services/data.service";
 @Component({
   selector: 'app-map',
@@ -22,7 +22,6 @@ export class MapComponent implements OnInit, OnChanges {
   private infowindow: google.maps.InfoWindow;
   private listOfPoints: LocationPoint[];
   name: string ='';
-
 
   ngOnInit(): void {
 
@@ -58,10 +57,7 @@ export class MapComponent implements OnInit, OnChanges {
           position: mapsMouseEvent.latLng,
         });
       });
-
-
       // this.calculateAndDisplayRoute(directionsService, directionsDisplay, this.map, infowindow);
-
     })
   }
 
@@ -73,7 +69,13 @@ export class MapComponent implements OnInit, OnChanges {
       ts.location.points = this.listOfPoints;
       ts.location.name = this.name;
       this.service.addTarget(ts);
+    } else {
+      this.service.getImages(744).subscribe(res => {
+        let ss = res as Array<TargetSat>;
+        console.log(ss[0].assets);
+      });
     }
+
   }
 
   createMarker(location: google.maps.LatLng) {
@@ -82,7 +84,7 @@ export class MapComponent implements OnInit, OnChanges {
     data.longitude = location.lng().toLocaleString();
     console.log(data)
     this.listOfPoints.push(data);
-    console.log(this.listOfPoints)
+    console.log(this.listOfPoints);
     new google.maps.Marker({
       position: location,
       map: this.map,

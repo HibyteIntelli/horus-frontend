@@ -60,22 +60,6 @@ export class DataService {
     return this.httpClient.get<T>(`${environment.apiUrl}/api/spoql/items?q=at '${environment.scopeKey}' select item from 'targetSatImages' where %7B property 'target' eq '${id}' %7D`);
   }
 
-  getLayouts() {
-    return this.httpClient.get<any[]>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/items/layout`);
-  }
-
-  getGaugeValue(chartIdent: number) {
-    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/circularGauge?chartId=${chartIdent}`);
-  }
-
-  getLineChartValues(chartIdent: number) {
-    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/lineSeries?chartId=${chartIdent}`);
-  }
-
-  getRangeChartValues(chartIdent: number) {
-    return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/rangeSeries?chartId=${chartIdent}`);
-  }
-
   getBarRangeValues(chartIdent: number) {
     return this.httpClient.get<any>(`${environment.apiUrl}/api/scope/${environment.scopeKey}/chart/barRange?chartId=${chartIdent}`);
   }

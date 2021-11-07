@@ -1,4 +1,4 @@
-<p-carousel [value]="imgs">
+<p-carousel [value]="imgs" [numVisible]="2" [numScroll]="1" [circular]="true">
   <ng-template let-item pTemplate="item">
     <img src="{{item}}" width="200px"/>
   </ng-template>

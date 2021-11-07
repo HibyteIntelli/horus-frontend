@@ -20,6 +20,7 @@ import {AppRoutingModule} from "../app-routing.module";
 import {AuthInterceptor} from "./providers/auth.interceptor";
 import { DashboardDataCardComponent } from './components/dashboard-data-card/dashboard-data-card.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     DxTextBoxModule,
     DxButtonModule,
     DxPopupModule,

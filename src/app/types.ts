@@ -71,7 +71,6 @@ export class Location {
 export class LocationPoint {
   latitude: string;
   longitude: string;
-  height: string;
 }
 
 export class Layout {

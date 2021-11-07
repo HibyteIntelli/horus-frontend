@@ -3,6 +3,8 @@ import {Loader} from "@googlemaps/js-api-loader";
 import {styles} from "./mapstyles";
 import DirectionsService = google.maps.DirectionsService;
 import DirectionsRenderer = google.maps.DirectionsRenderer;
+import {Location, LocationPoint, Target} from "../../types";
+import {DataService} from "../../services/data.service";
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -10,12 +12,16 @@ import DirectionsRenderer = google.maps.DirectionsRenderer;
 })
 export class MapComponent implements OnInit, OnChanges {
 
+  constructor(public service: DataService) { }
+
   title = 'google-maps';
 
   @Input()
   visible: boolean;
   private map: google.maps.Map;
   private infowindow: google.maps.InfoWindow;
+  private listOfPoints: LocationPoint[];
+  name: string ='';
 
 
   ngOnInit(): void {
@@ -23,7 +29,7 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   initializeMap() {
-
+  this.listOfPoints = [];
     this.infowindow = new google.maps.InfoWindow();
     let directionsService = new google.maps.DirectionsService;
     let directionsDisplay = new google.maps.DirectionsRenderer({
@@ -36,7 +42,6 @@ export class MapComponent implements OnInit, OnChanges {
     })
 
     loader.load().then(() => {
-      console.log('loaded gmaps')
 
       let location = { lat: 51.233334, lng: 	6.783333 }
       // @ts-ignore
@@ -60,7 +65,24 @@ export class MapComponent implements OnInit, OnChanges {
     })
   }
 
-  createMarker(location:any ) {
+  addPoints() {
+    if(this.name != '') {
+      let ts = new Target();
+      let lc = new Location();
+      ts.location = lc;
+      ts.location.points = this.listOfPoints;
+      ts.location.name = this.name;
+      this.service.addTarget(ts);
+    }
+  }
+
+  createMarker(location: google.maps.LatLng) {
+    let data = new LocationPoint();
+    data.latitude = location.lat().toLocaleString();
+    data.longitude = location.lng().toLocaleString();
+    console.log(data)
+    this.listOfPoints.push(data);
+    console.log(this.listOfPoints)
     new google.maps.Marker({
       position: location,
       map: this.map,

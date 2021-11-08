@@ -1,0 +1,26 @@
+<dx-popup
+  [showTitle]="true"
+  title="Chart Configurator"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="false"
+  container=".dx-viewport"
+  [(visible)]="visible"
+>
+  <app-chart-configuration [noOfDisplays]="noOfDisplays"
+                           (dashboardTitle)="newDashboard.name  = $event"
+                           (chartTitle)="chartTitle = $event"
+                           (chartType)="chartType = $event"
+                           (targetName)="targetName = $event"
+                           (parameter)="parameter = $event"
+                           (addConfiguration)="addConfiguration()"></app-chart-configuration>
+
+  <dx-button
+    stylingMode="contained"
+    text="Save"
+    type="normal"
+    class="save-button"
+    [width]="120"
+    (click)="saveDetails()"
+  ></dx-button>
+</dx-popup>

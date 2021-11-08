@@ -1,0 +1,27 @@
+<div class="title">Ice Thickness</div>
+<dx-chart
+  id="chart"
+  palette="violet"
+  [dataSource]="data"
+>
+  <dxo-common-series-settings
+    argumentField="argument"
+    type="rangeArea"
+  ></dxo-common-series-settings>
+  <dxi-value-axis
+    [tickInterval]="0.5"
+    [valueMarginsEnabled]="false"
+    [visualRange]="{ startValue: 0, endValue: 5 }"
+  >
+    <dxo-label>
+      <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+    </dxo-label>
+  </dxi-value-axis>
+
+  <dxi-series
+    rangeValue1Field="min"
+    rangeValue2Field="max"
+    name="Ice Thickness"
+  ></dxi-series>
+
+</dx-chart>

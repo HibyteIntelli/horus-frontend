@@ -1,0 +1,30 @@
+.full {
+  width: 100vw;
+  height: 100vh;
+}
+
+.reset-button{
+  height: 30px;
+  width: 70px;
+  position: absolute;
+  z-index: 1;
+  top: 95%;
+}
+
+.add-button{
+  height: 30px;
+  width: 70px;
+  position: absolute;
+  left: 260px;
+  z-index: 1;
+  top: 95%;
+}
+
+.input-n-box{
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  left: 100px;
+  z-index: 1;
+  top: 95%;
+}

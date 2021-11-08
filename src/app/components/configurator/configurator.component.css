@@ -1,0 +1,13 @@
+::ng-deep.dx-overlay-content .dx-popup-content{
+  display: grid;
+}
+.save-button{
+  width: 100%!important;
+}
+::ng-deep .dx-popup-content, ::ng-deep .dx-popup-title.dx-toolbar {
+  background: #1B263B;
+}
+
+::ng-deep .dx-toolbar-label .dx-toolbar-item-content > div{
+  color: #f5fff9;
+}

@@ -1,0 +1,9 @@
+.container {
+  margin-left: 5rem;
+  margin-top: 5rem;
+  display: block;
+}
+
+.card {
+  margin: 10px;
+}

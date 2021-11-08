@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.d-grid {
+  display: grid;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.h-15 {
+  height: 150px;
+}
+
+.mb-3rem {
+  margin-bottom: 3rem !important;
+}
+
+.title {
+  color: #f5fff9;
+  font-size: 30px;
+  margin-left: 30px;
+}

@@ -1,0 +1,56 @@
+<div class="dx-field">
+  <div class="dx-field-value">
+    <dx-text-box placeholder="Dashboard title..."
+                 (onChange)="dashboardTitle.emit($event.event.target.value)"></dx-text-box>
+  </div>
+</div>
+
+<div class="dx-field" *ngFor="let index of [].constructor(noOfDisplays)">
+  <div class="dx-field-value">
+    <dx-text-box placeholder="Chart title..." (onChange)="chartTitle.emit($event.event.target.value)"
+                 class="dropdown"></dx-text-box>
+  </div>
+  <div class="dx-field-value dropdown">
+    <dx-select-box
+      [value]="chartType"
+      valueExpr="type"
+      displayExpr="type"
+      placeholder="Chart Type"
+      [dataSource]="chartTypes"
+      (onSelectionChanged)="emitChartType($event)"
+    ></dx-select-box>
+  </div>
+  <div class="dx-field-value">
+    <dx-text-box placeholder="Target name..." (onChange)="targetName.emit($event.event.target.value)"></dx-text-box>
+  </div>
+  <div class="dx-field-value dropdown">
+    <dx-button
+      stylingMode="contained"
+      text="Location"
+      type="normal"
+      [width]="120"
+      (click)="showMap = true"
+    ></dx-button>
+  </div>
+  <div class="dx-field-value dropdown">
+    <dx-select-box
+      [value]="parameter"
+      valueExpr="name"
+      placeholder="Parameter"
+      [dataSource]="parameters"
+      (onSelectionChanged)="emitParameter($event)"
+      displayExpr="name"
+    ></dx-select-box>
+  </div>
+  <div class="dx-field-value">
+    <dx-button
+      stylingMode="contained"
+      text="+"
+      type="normal"
+      [width]="50"
+      (click)="addConfiguration.emit()"
+    ></dx-button>
+  </div>
+</div>
+
+<app-map [visible]="showMap"></app-map>

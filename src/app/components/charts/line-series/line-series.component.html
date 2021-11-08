@@ -1,0 +1,24 @@
+<div class="title">Temperature</div>
+
+<dx-chart
+  palette="violet"
+  [dataSource]="data">
+  <dxi-series valueField="value" name="Temperature"></dxi-series>
+  <dxo-common-series-settings
+    #seriesSettings
+    argumentField="argument"
+  ></dxo-common-series-settings>
+  <dxo-margin [bottom]="20"></dxo-margin>
+  <dxo-common-axis-settings>
+    <dxo-grid [visible]="true"></dxo-grid>
+  </dxo-common-axis-settings>
+  <dxo-legend verticalAlignment="top" horizontalAlignment="right">
+  </dxo-legend>
+  <dxo-argument-axis [allowDecimals]="false" [axisDivisionFactor]="60">
+    <dxo-label>
+      <dxo-format type="decimal"></dxo-format>
+    </dxo-label>
+  </dxo-argument-axis>
+  <dxo-export [enabled]="true"></dxo-export>
+  <dxo-tooltip [enabled]="true"></dxo-tooltip>
+</dx-chart>

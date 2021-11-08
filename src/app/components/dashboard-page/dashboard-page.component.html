@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="container" *ngIf="editMode === 'true'">
+  <div class="d-block">
+    <div *ngFor="let chart of dashboardCharts; index as i" id="container" class="chart-container">
+      <dx-select-box
+        valueExpr="name"
+        placeholder="Chart"
+        [dataSource]="dashboardCharts"
+        (onSelectionChanged)="selectChart($event, i)"
+        displayExpr="name"
+      ></dx-select-box>
+    </div>
+  </div>
+
+  <dx-button
+    class="save-layout-button"
+    text="Save"
+    (onClick)="saveLayout()">
+  </dx-button>
+</div>
+
+<div class="d-grid">
+  <div class="container" *ngIf="editMode === 'false'">
+    <div class="d-block">
+      <div *ngFor="let chart of dashboardCharts" id="chart-container">
+        <app-bar-gauge *ngIf="typeMatches('BAR_GAUGE', chart)" class="chart" style="zoom: 0.8; float: left"
+                       [id]="chart.id"></app-bar-gauge>
+        <app-circular-gauge *ngIf="typeMatches('CIRCULAR_GAUGE', chart)" class="chart" style="zoom: 0.8; float: left"
+                            [id]="chart.id"></app-circular-gauge>
+        <app-line-series *ngIf="typeMatches('LINE_SERIES', chart)" class="chart" style="zoom: 0.55; float: left"
+                         [id]="chart.id"></app-line-series>
+        <app-range-series *ngIf="typeMatches('RANGE_SERIES', chart)" class="chart" style="zoom: 0.55; float: left"
+                          [id]="chart.id"></app-range-series>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex h-150">
+    <div class="chart d-flex mb-3rem">
+      <div class="hour">{{getHour()}}</div>
+    </div>
+    <app-carousel></app-carousel>
+  </div>
+</div>
